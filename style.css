@@ -1,0 +1,78 @@
+/* 响应式布局，优先竖屏；简洁风格，适配移动设备 */
+:root{
+  --bg:#70c5ce;
+  --ground:#ded895;
+  --panel-bg: rgba(255,255,255,0.95);
+  --accent:#ffcc00;
+  --text:#333;
+  --btn-bg:#28a745;
+  --btn-color:#fff;
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family:var(--font-family);
+  -webkit-tap-highlight-color: transparent;
+  background: linear-gradient(#70c5ce, #a0e0e8);
+}
+
+#game{
+  display:block;
+  width:100%;
+  height:100vh;
+  touch-action: manipulation;
+  background: transparent;
+}
+
+/* Overlay panel shown before start / on game over */
+.overlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+}
+.panel{
+  pointer-events:auto;
+  background:var(--panel-bg);
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(20,30,40,0.18);
+  text-align:center;
+  max-width:92%;
+}
+.panel h1{ margin:0 0 8px; font-size:20px; color:var(--text); }
+.panel p{ margin:6px 0; color:var(--text); font-size:14px; }
+#startBtn, .btn{
+  margin-top:10px;
+  padding:10px 16px;
+  border:0;
+  border-radius:8px;
+  font-size:16px;
+  background:var(--btn-bg);
+  color:var(--btn-color);
+  cursor:pointer;
+}
+.hint{ font-size:12px; color:#666; margin-top:8px; }
+
+/* Score in top-right corner */
+.score {
+  position:fixed;
+  top:10px;
+  right:10px;
+  background: rgba(255,255,255,0.85);
+  padding:6px 10px;
+  border-radius:8px;
+  font-weight:600;
+  pointer-events:none;
+  color:var(--text);
+}
+
+/* Make layout friendly on small width */
+@media (orientation:landscape) and (max-height:450px) {
+  .panel{ max-width:60%; }
+  .panel h1{ font-size:18px; }
+}
